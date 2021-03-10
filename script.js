@@ -18,3 +18,12 @@ let questions =[
         correctAnswer:"float",
     }
 ]
+
+for (var i=0; i<questions.length; i++){
+    console.log(questions[i].question)
+    questionText.textContent=(questions[i].question);
+    aEl.textContent=(questions[i].answerA);
+    bEl.textContent=(questions[i].answerB);
+    cEl.textContent=(questions[i].answerC);
+    dEl.textContent=(questions[i].answerD);
+}
