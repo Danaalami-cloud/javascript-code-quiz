@@ -12,12 +12,9 @@ var startButton= document.getElementById("start-btn");
 var timeEl= document.getElementById("time-remaining");
 
 let questions =[
-    {
-        question:"Which of the following is not JavaScript Data Types?",
-        optionA: "number",
-        optionB: "float",
-        optionC: "undefined",
-        OptionD: "boolean",
-    
+        q1={
+            question:"Which of the following is not JavaScript Data Types?",
+        answers: ["number", "float", "undefined","boolean"],
+        correctAnswer:"float",
     }
 ]
