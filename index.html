@@ -5,29 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Coding Quiz </title>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="container">
+        <div class=" question-container">
             <div class="card-containts">
-                <h1 id="Question"> Welcome Developer</h1>
-                <div id="time-remaining">
-                    <h2>seconds remaining</h2>
-                    <button class="button" id="start_btn"> Start Quiz!</button>
-                    <form>
-                        <button class="button" id="answerButton">Answer 1</button>>
-                        <button class="button" id="answerButton">Answer 2</button>>
-                        <button class="button" id="answerButton">Answer 3</button>>
-                        <button class="button" id="answerButton">Answer 4</button>>
-                      </form>
 
-                    
+                <div id="start-screen">
+                    <h1 id="welcome"> Welcome Developer</h1>
+                    <h2>CLick the button below to start the quiz</h2>
+                    <button class="button" id="start-btn"> Start Quiz!</button>
                 </div>
+                <div id="question" class="hide">
+                    <h2 id="time-remaining">seconds remaining</h2>
+                    <h2 id="question-title"></h2>
+                    <div id="question-answers"></div>
+                </div>
+
+
             </div>
         </div>
+    </div>
     </div>
     <script src="script.js"></script>
 </body>
