@@ -8,8 +8,11 @@
 // game over = all answered or time=0 
 //           = save initials and score. 
 var startScreen = document.getElementById("start-screen")
+var questionScreen = document.getElementById("question")
 var startButton = document.getElementById("start-btn");
 var timeEl = document.getElementById("time-remaining");
+var questionTitle = document.getElementById("question-title");
+var questionAnswers = document.getElementById("question-answers");
 var score = 0;
 let questions = [
     {
@@ -30,9 +33,34 @@ let questions = [
 
     }
 ]
+var currentIndex = 0; 
 
 function quizBegin() {
 startScreen.setAttribute("class", "hide")
+questionScreen.removeAttribute("class");
+
+//start the timer
+//set the value of the time-remaining to the timer value
+//introduct the first question to the user via another function call (startQuestions)
+startQuestions();
+}
+
+function startQuestions(){
+    questionTitle.textContent = questions[currentIndex].question;
+    var answersAvailableTotel = questions[currentIndex].answers.length;
+
+    questionAnswers.innerHTML = ""; 
+    for(var i = 0 ; i < answersAvailableTotel; i++){
+        var button = document.createElement("button");
+        button.textContent = questions[currentIndex].answers[i]
+        button.onclick = checkAnswer;
+        questionAnswers.appendChild(button)
+    }
+}
+
+function checkAnswer(){
+    currentIndex++
+    startQuestions();
 }
 
 startButton.onclick = quizBegin
