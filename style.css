@@ -1,7 +1,24 @@
 button {
-    width: 100%;
+    width: 40%;
+    color:black;
+    background-color: aquamarine;
+    padding: 10px;
+    margin: 10px 25px 0 auto;
+    float: left;
+    display: inline;
+    border: 1px solid black;
 }
 
 .hide {
     display : none; 
+}
+
+body {
+    background-color: blanchedalmond;
+
+}
+
+.container {
+width: 100%;
+text-align: center;
 }
