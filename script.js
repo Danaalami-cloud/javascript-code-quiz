@@ -34,12 +34,13 @@ let questions = [
     question: "The function and  var are known as",
     asnwers: ["Key words", "Data types", "Decleration statements", "Prototype"],
     correctAnswer: "Decleration statement",
-  }
+  },
+
   {
-      question: " In JavaScript the x===y statement implies that:",
+      question: "In JavaScript the x===y statement implies that",
       answers: ["Both x and y are equal in value, type and reference address as well", "Both are x and y are equal in value only","Both are equal in the value and data type","Both are not same at all"],
       correctAnswer: "Both are equal in the value and data type", 
-    }
+    },
 ];
 var currentIndex = 0;
 
@@ -106,3 +107,4 @@ function endQuiz() {
   // input box and button which added score and initials to local storage
 }
  startButton.onclick = quizBegin()
+ setTime();
