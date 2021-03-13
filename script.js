@@ -14,6 +14,9 @@ var timeEl = document.getElementById("time-remaining");
 var questionTitle = document.getElementById("question-title");
 var questionAnswers = document.getElementById("question-answers");
 var score = 0;
+var highscore = 0;
+var timeLeft = 55;
+var timer;
 let questions = [
   {
     question: "Which of the following is not JavaScript Data Types?",
@@ -54,21 +57,19 @@ function quizBegin() {
   startQuestions();
 }
 
-function setTime() {
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timeEl.textContent = secondsLeft + "Go you";
-    
-      if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        sendMessage();
+function startTimer() {
+   var timer = setInterval(function() {
+        timeElement.textContent = timeRemaining
+        timerCount--;
+        timeElement.textContent = timeRemaining + "seconds left"
+       
+
+      if (timeRemaining === 0) {
+        clearInterval(timer);
     }
+}, 1000)
 
-  }, 1000);
-
-      }
     
-
 function startQuestions() {
   questionTitle.textContent = questions[currentIndex].question;
   var answersAvailableTotel = questions[currentIndex].answers.length;
@@ -106,5 +107,5 @@ function endQuiz() {
   // reveal highsocores / add your highscore section
   // input box and button which added score and initials to local storage
 }
- startButton.onclick = quizBegin()
- setTime();
+startButton.onclick = quizBegin()
+quizBegin() }
