@@ -13,6 +13,7 @@ var startButton = document.getElementById("start-btn");
 var timeElement = document.querySelector("#countdown");
 var questionTitle = document.getElementById("question-title");
 var questionAnswers = document.getElementById("question-answers");
+var submitScoreButton = document.getElementById("submit-score"); 
 var score = 0;
 var timer;
 var timeCount = 60;
@@ -57,7 +58,6 @@ var currentIndex = 0;
 function quizBegin() {
   startScreen.setAttribute("class", "hide");
   questionScreen.removeAttribute("class");
-
   startTimer();
   startQuestions();
 }
@@ -96,7 +96,6 @@ function checkAnswer() {
     alert("Incorrect");
     timeCount -= 5;
     timeElement.textContent = timeCount;
-    //when implementing timer - incorrect will result in loss of time
   }
   currentIndex++;
 
@@ -106,16 +105,14 @@ function checkAnswer() {
     startQuestions();
   }
 }
-var submitScoreButton = document.getElementById("submit-score"); 
+
 
 function endQuiz() {
   questionScreen.setAttribute("class", "hide");
     var highscoreSection = document.getElementById("highscores-container");
     highscoreSection.removeAttribute("class");
     
-    // hide questions section
-    // reveal highsocores / add your highscore section
-    // input box and button which added score and initials to local storage
+    
 }
 
 function submitScore(){
