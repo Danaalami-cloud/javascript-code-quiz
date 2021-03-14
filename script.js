@@ -13,7 +13,9 @@ var startButton = document.getElementById("start-btn");
 var timeElement = document.querySelector("#countdown");
 var questionTitle = document.getElementById("question-title");
 var questionAnswers = document.getElementById("question-answers");
-var submitScoreButton = document.getElementById("submit-score"); 
+var submitScoreButton = document.getElementById("submit-score");
+var highscoreSection = document.getElementById("highscores-container");
+
 var score = 0;
 var timer;
 var timeCount = 60;
@@ -109,11 +111,11 @@ function checkAnswer() {
 
 function endQuiz() {
   questionScreen.setAttribute("class", "hide");
-    var highscoreSection = document.getElementById("highscores-container");
     highscoreSection.removeAttribute("class");
     
-    
 }
+
+
 
 function submitScore(){
     var initials = document.getElementById("initials");
