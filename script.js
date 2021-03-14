@@ -10,13 +10,15 @@
 var startScreen = document.getElementById("start-screen");
 var questionScreen = document.getElementById("question");
 var startButton = document.getElementById("start-btn");
-var timeEl = document.getElementById("time-remaining");
+var timeElement = document.querySelector("#countdown");
 var questionTitle = document.getElementById("question-title");
 var questionAnswers = document.getElementById("question-answers");
 var score = 0;
-var highscore = 0;
-var timeLeft = 55;
 var timer;
+var timeCount = 60;
+var winCounter = 0;
+var loseCounter = 0;
+var isWin = false;
 let questions = [
   {
     question: "Which of the following is not JavaScript Data Types?",
@@ -40,10 +42,15 @@ let questions = [
   },
 
   {
-      question: "In JavaScript the x===y statement implies that",
-      answers: ["Both x and y are equal in value, type and reference address as well", "Both are x and y are equal in value only","Both are equal in the value and data type","Both are not same at all"],
-      correctAnswer: "Both are equal in the value and data type", 
-    },
+    question: "In JavaScript the x===y statement implies that",
+    answers: [
+      "Both x and y are equal in value, type and reference address as well",
+      "Both are x and y are equal in value only",
+      "Both are equal in the value and data type",
+      "Both are not same at all",
+    ],
+    correctAnswer: "Both are equal in the value and data type",
+  },
 ];
 var currentIndex = 0;
 
@@ -51,25 +58,20 @@ function quizBegin() {
   startScreen.setAttribute("class", "hide");
   questionScreen.removeAttribute("class");
 
-  //start the timer
-  //set the value of the time-remaining to the timer value
-  //introduct the first question to the user via another function call (startQuestions)
+  startTimer();
   startQuestions();
 }
 
 function startTimer() {
-   var timer = setInterval(function() {
-        timeElement.textContent = timeRemaining
-        timerCount--;
-        timeElement.textContent = timeRemaining + "seconds left"
-       
-
-      if (timeRemaining === 0) {
-        clearInterval(timer);
+  timer = setInterval(function () {
+    timeCount--;
+    timeElement.textContent = timeCount;
+    if (timeCount <= 0) {
+      endQuiz()
     }
-}, 1000)
+  }, 1000);
+}
 
-    
 function startQuestions() {
   questionTitle.textContent = questions[currentIndex].question;
   var answersAvailableTotel = questions[currentIndex].answers.length;
@@ -89,8 +91,11 @@ function checkAnswer() {
 
   if (valueSelected === questions[currentIndex].correctAnswer) {
     alert("Correct");
+    score += 5;
   } else {
     alert("Incorrect");
+    timeCount -= 5;
+    timeElement.textContent = timeCount;
     //when implementing timer - incorrect will result in loss of time
   }
   currentIndex++;
@@ -101,11 +106,36 @@ function checkAnswer() {
     startQuestions();
   }
 }
+var submitScoreButton = document.getElementById("submit-score"); 
 
 function endQuiz() {
-  // hide questions section
-  // reveal highsocores / add your highscore section
-  // input box and button which added score and initials to local storage
+  questionScreen.setAttribute("class", "hide");
+    var highscoreSection = document.getElementById("highscores-container");
+    highscoreSection.removeAttribute("class");
+    
+    // hide questions section
+    // reveal highsocores / add your highscore section
+    // input box and button which added score and initials to local storage
 }
-startButton.onclick = quizBegin()
-quizBegin() }
+
+function submitScore(){
+    var initials = document.getElementById("initials");
+    var scoreObject = {
+        player: initials.value,
+        finalScore: score
+    }
+
+    var storageHighscores = JSON.parse(window.localStorage.getItem("highscores")) || []; 
+    storageHighscores.push(scoreObject); 
+    window.localStorage.setItem("highscores", JSON.stringify(storageHighscores)); 
+
+    var list = document.getElementById("highscores-list");
+    for (var i = 0; i < storageHighscores.length; i++){
+        var entry = document.createElement("li");
+        entry.textContent = storageHighscores[i].player + " : " + storageHighscores[i].finalScore    ;
+        list.appendChild(entry)
+    }
+}
+
+submitScoreButton.addEventListener("click", submitScore);
+startButton.addEventListener("click", quizBegin);

@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Coding Quiz</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/style.css">
-    <title>Coding Quiz </title>
-</head>
-
-<body>
+  <body>
     <div class="wrapper">
-        <div class=" question-container">
-            <div class="card-containts">
-
-                <div id="start-screen">
-                    <h1 id="welcome"> Welcome Developer</h1>
-                    <h2>Click the button below to test your knowledge on JS</h2>
-                    <button class="button" id="start-btn"> Start Quiz!</button>
-                </div>
-                <div id="question" class="hide">
-                    <h2> <span id="time-remaining">Go you!</span></h2>
-                    <h2 id="question-title"></h2>
-                    <div id="question-answers"></div>
-                </div>
-
-
-            </div>
+      <div class="question-container">
+        <div class="card-containts">
+          <div id="start-screen">
+            <h1 id="welcome">Welcome Developer</h1>
+            <h2>Click the button below to test your knowledge on JS</h2>
+            <button class="button" id="start-btn">Start Quiz!</button>
+          </div>
+          <div id="question" class="hide">
+            <h2><span id="countdown">Go You!</span></h2>
+            <h2 id="question-title"></h2>
+            <div id="question-answers"></div>
+          </div>
         </div>
-    </div>
+      </div>
+      <div id="highscores-container" class="hide">
+        <h1>
+          Thanks for taking part! Please submit your score with your initials
+          below:
+        </h1>
+        <p>
+          Enter Initials <input type="text" id="initials" /><button
+            id="submit-score"
+          >
+            Submit
+          </button>
+        </p>
+        <ul id="highscores-list"></ul>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
